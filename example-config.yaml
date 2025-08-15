@@ -1,0 +1,59 @@
+# Exemples de configuration pour la carte météo moderne
+
+# Configuration de base
+- type: custom:meteo-card
+  entity: weather.valencin
+
+# Avec nom de ville personnalisé
+- type: custom:meteo-card
+  entity: weather.valencin
+  name: "Valencin"
+
+# Plusieurs cartes pour différentes villes
+- type: horizontal-stack
+  cards:
+    - type: custom:meteo-card
+      entity: weather.valencin
+      name: "Valencin"
+    - type: custom:meteo-card
+      entity: weather.lyon
+      name: "Lyon"
+    - type: custom:meteo-card
+      entity: weather.paris
+      name: "Paris"
+
+# Dans une grille
+- type: grid
+  columns: 2
+  square: false
+  cards:
+    - type: custom:meteo-card
+      entity: weather.valencin
+      name: "Valencin"
+    - type: custom:meteo-card
+      entity: weather.lyon
+      name: "Lyon"
+    - type: custom:meteo-card
+      entity: weather.paris
+      name: "Paris"
+    - type: custom:meteo-card
+      entity: weather.marseille
+      name: "Marseille"
+
+# Intégration avec d'autres cartes
+- type: vertical-stack
+  cards:
+    - type: custom:meteo-card
+      entity: weather.valencin
+      name: "Valencin"
+    - type: entities
+      title: "Détails météo"
+      entities:
+        - entity: sensor.temperature
+          name: "Température actuelle"
+        - entity: sensor.humidity
+          name: "Humidité"
+        - entity: sensor.pressure
+          name: "Pression"
+        - entity: sensor.wind_speed
+          name: "Vitesse du vent"

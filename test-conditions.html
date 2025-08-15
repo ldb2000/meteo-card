@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test des conditions météo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .weather-card {
+            height: 200px;
+            border-radius: 16px;
+            padding: 24px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .weather-card:hover {
+            transform: translateY(-2px);
+        }
+        .location {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        .current-temp {
+            font-size: 64px;
+            font-weight: 100;
+            line-height: 1;
+            margin: 8px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .condition {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+        .temp-range {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .temp-high, .temp-low {
+            opacity: 0.9;
+        }
+        
+        /* Backgrounds */
+        .sunny { background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); }
+        .partlycloudy { background: linear-gradient(135deg, #74b9ff 0%, #0984e3 80%, #636e72 100%); }
+        .cloudy { background: linear-gradient(135deg, #636e72 0%, #2d3436 100%); }
+        .rainy { background: linear-gradient(135deg, #636e72 0%, #2d3436 100%); }
+        .snowy { background: linear-gradient(135deg, #ddd6fe 0%, #8b5cf6 100%); }
+        .clear-night { background: linear-gradient(135deg, #2d3436 0%, #000000 100%); }
+        .lightning { background: linear-gradient(135deg, #2d3436 0%, #636e72 50%, #2d3436 100%); }
+        
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌤️ Test des conditions météo - Carte moderne</h1>
+        
+        <div class="grid">
+            <div class="weather-card sunny">
+                <div class="location">Valencin</div>
+                <div class="current-temp">21°</div>
+                <div class="condition">Ensoleillé</div>
+                <div class="temp-range">
+                    <span class="temp-high">↑ 33°</span>
+                    <span class="temp-low">↓ 20°</span>
+                </div>
+            </div>
+            
+            <div class="weather-card partlycloudy">
+                <div class="location">Lyon</div>
+                <div class="current-temp">18°</div>
+                <div class="condition">Belles éclaircies</div>
+                <div class="temp-range">
+                    <span class="temp-high">↑ 25°</span>
+                    <span class="temp-low">↓ 12°</span>
+                </div>
+            </div>
+            
+            <div class="weather-card cloudy">
+                <div class="location">Paris</div>
+                <div class="current-temp">15°</div>
+                <div class="condition">Nuageux</div>
+                <div class="temp-range">
+                    <span class="temp-high">↑ 19°</span>
+                    <span class="temp-low">↓ 11°</span>
+                </div>
+            </div>
+            
+            <div class="weather-card rainy">
+                <div class="location">Brest</div>
+                <div class="current-temp">12°</div>
+                <div class="condition">Pluvieux</div>
+                <div class="temp-range">
+                    <span class="temp-high">↑ 16°</span>
+                    <span class="temp-low">↓ 8°</span>
+                </div>
+            </div>
+            
+            <div class="weather-card snowy">
+                <div class="location">Chamonix</div>
+                <div class="current-temp">-2°</div>
+                <div class="condition">Neigeux</div>
+                <div class="temp-range">
+                    <span class="temp-high">↑ 3°</span>
+                    <span class="temp-low">↓ -8°</span>
+                </div>
+            </div>
+            
+            <div class="weather-card clear-night">
+                <div class="location">Marseille</div>
+                <div class="current-temp">14°</div>
+                <div class="condition">Nuit claire</div>
+                <div class="temp-range">
+                    <span class="temp-high">↑ 22°</span>
+                    <span class="temp-low">↓ 10°</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <h2>🎨 Design de votre nouvelle carte météo</h2>
+            <p>Votre carte météo a été mise à jour avec un design moderne qui reprend les codes visuels des applications météo populaires :</p>
+            <ul>
+                <li><strong>Layout centré</strong> : Information principale (température) au centre</li>
+                <li><strong>Typographie moderne</strong> : Police système avec hiérarchie claire</li>
+                <li><strong>Couleurs adaptatives</strong> : Dégradés qui s'adaptent aux conditions météo</li>
+                <li><strong>Localisation</strong> : Nom de ville configurable en haut</li>
+                <li><strong>Températures min/max</strong> : Avec flèches pour une lecture intuitive</li>
+                <li><strong>Descriptions en français</strong> : Conditions météo traduites</li>
+                <li><strong>Animations subtiles</strong> : Effet au survol pour plus d'interactivité</li>
+            </ul>
+            
+            <h3>🛠️ Configuration</h3>
+            <p>Pour utiliser cette carte dans Home Assistant :</p>
+            <pre><code>type: custom:meteo-card
+entity: weather.votre_entite
+name: "Votre ville"  # Optionnel</code></pre>
+        </div>
+    </div>
+</body>
+</html>

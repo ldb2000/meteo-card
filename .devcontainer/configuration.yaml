@@ -9,8 +9,24 @@ lovelace:
       type: module
 
 # Configuration météo pour les tests
-weather:
-  - platform: demo
+# Utiliser default_config qui inclut les entités demo
+
+homeassistant:
+  customize:
+    weather.demo:
+      friendly_name: "Météo Demo"
+
+# Entité météo template simple pour test
+template:
+  - weather:
+      - name: "Valencin"
+        condition_template: "sunny"
+        temperature_template: "{{ 21 }}"
+        humidity_template: "{{ 65 }}"
+        pressure_template: "{{ 1013 }}"
+        wind_bearing_template: "{{ 180 }}"
+        wind_speed_template: "{{ 5 }}"
+        visibility_template: "{{ 10 }}"
 
 # Capteurs de test pour la météo
 sensor:

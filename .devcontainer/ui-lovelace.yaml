@@ -6,20 +6,55 @@ views:
     cards:
       - type: custom:meteo-card
         entity: weather.valencin
+        name: "Valencin"
+        
+      - type: custom:meteo-card
+        entity: weather.valencin_2
+        name: "Demo"
+        
+      - type: entities
+        title: "Entités météo disponibles"
+        entities:
+          - weather.demo_weather_north
+          - weather.demo_weather_south
+          - sensor.temperature_test
+          - sensor.humidity_test
+      
+      - type: weather-forecast
+        title: "Carte météo standard (comparaison)"
+        entity: weather.demo_weather_north
         
       - type: markdown
         content: |
-          ## Guide de test de la carte météo
+          ## ✅ Carte météo moderne fonctionnelle
           
-          Cette configuration de test inclut :
-          - **Carte météo personnalisée** : Notre carte `meteo-card` utilisant l'entité `weather.demo_weather_north`
-          - **Entités de démonstration** : Entités météo factices pour les tests
-          - **Carte météo standard** : Pour comparaison avec notre carte personnalisée
+          **Configuration de test actuelle :**
+          - 🌤️ **Carte principale** : `weather.demo_weather_north` → affichée comme "Valencin"
+          - 🌧️ **Carte secondaire** : `weather.demo_weather_south` → affichée comme "Lyon"
+          - 📊 **Carte standard HA** : Pour comparaison
+          - 📈 **Capteurs de test** : Température et humidité
           
-          ### Pour tester la carte :
-          1. Modifiez le fichier `meteo-card.js` dans `/workspace/`
-          2. Rechargez Home Assistant ou rafraîchissez la page
-          3. Les changements devraient être visibles immédiatement
+          ### 🎨 Caractéristiques du nouveau design :
+          - ✨ **Design moderne** inspiré d'iOS/macOS
+          - 🏙️ **Nom personnalisable** via le paramètre `name`
+          - 🌡️ **Grande température centrée** (64px)
+          - 📝 **Descriptions en français** ("Belles éclaircies", etc.)
+          - ↗️ **Températures min/max** avec flèches intuitive
+          - 🎨 **Arrière-plans adaptatifs** selon la météo
+          - 🌊 **Animations subtiles** au survol
           
-          ### Conditions météo testables :
-          La carte Demo Weather change périodiquement et inclut : `sunny`, `rainy`, `cloudy`, `snowy`, `partlycloudy`, `clear-night`
+          ### 🛠️ Pour votre installation :
+          Remplacez `weather.demo_weather_north` par votre entité météo :
+          ```yaml
+          type: custom:meteo-card
+          entity: weather.votre_entite
+          name: "Votre Ville"
+          ```
+          
+          ### 🔄 Développement :
+          1. Modifiez `meteo-card.js` dans `/workspace/`
+          2. Exécutez `./reload-card.sh`
+          3. Rafraîchissez avec Ctrl+F5
+          
+          ### 🌤️ Conditions météo testées :
+          `sunny`, `partlycloudy`, `rainy`, `cloudy`, `snowy`, `clear-night`, `lightning`

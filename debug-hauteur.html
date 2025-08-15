@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Hauteur - Test Carte Météo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .code {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h1>🔍 Debug de la hauteur de carte</h1>
+        
+        <h2>📋 Instructions de debug</h2>
+        <ol>
+            <li><strong>Ouvrez Home Assistant</strong> : http://localhost:8123</li>
+            <li><strong>Ouvrez la console</strong> : F12 > Console</li>
+            <li><strong>Copiez/collez ce code dans la console</strong> :</li>
+        </ol>
+        
+        <div class="code">
+// Debug hauteur carte météo<br>
+const cards = document.querySelectorAll('meteo-card');<br>
+console.log('Nombre de cartes météo:', cards.length);<br>
+<br>
+cards.forEach((card, index) => {<br>
+&nbsp;&nbsp;const haCard = card.shadowRoot?.querySelector('ha-card');<br>
+&nbsp;&nbsp;const computed = window.getComputedStyle(haCard || card);<br>
+&nbsp;&nbsp;console.log(`Carte ${index}:`, {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;element: haCard || card,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hauteurCSS: computed.height,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hauteurReelle: (haCard || card).offsetHeight + 'px',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;styles: computed<br>
+&nbsp;&nbsp;});<br>
+});
+        </div>
+        
+        <h2>🎯 Solutions alternatives</h2>
+        
+        <h3>Solution 1 : Force avec inline style</h3>
+        <p>Si le CSS ne marche pas, je peux modifier le code pour forcer la hauteur directement dans le HTML :</p>
+        <div class="code">
+&lt;ha-card style="height: 120px !important;"&gt;
+        </div>
+        
+        <h3>Solution 2 : CSS plus spécifique</h3>
+        <p>Utiliser des sélecteurs plus spécifiques :</p>
+        <div class="code">
+meteo-card ha-card { height: 120px !important; }
+        </div>
+        
+        <h3>Solution 3 : Changer l'approche</h3>
+        <p>Au lieu de fixer la hauteur, optimiser le contenu pour qu'il prenne moins de place naturellement.</p>
+        
+        <h2>🔧 État actuel du code</h2>
+        <p>J'ai appliqué ces styles (lignes 138-142) :</p>
+        <div class="code">
+:host {<br>
+&nbsp;&nbsp;height: 120px !important;<br>
+&nbsp;&nbsp;min-height: 120px !important;<br>
+&nbsp;&nbsp;max-height: 120px !important;<br>
+}<br>
+<br>
+ha-card {<br>
+&nbsp;&nbsp;height: 120px !important;<br>
+&nbsp;&nbsp;min-height: 120px !important;<br>
+&nbsp;&nbsp;/* ... autres styles ... */<br>
+}
+        </div>
+        
+        <h2>❓ Que faire maintenant</h2>
+        <ol>
+            <li><strong>Testez le code de debug</strong> dans la console</li>
+            <li><strong>Partagez les résultats</strong> avec moi</li>
+            <li><strong>Je proposerai</strong> une solution adaptée</li>
+        </ol>
+        
+        <p><strong>📞 Alternative :</strong> Dites-moi exactement ce que vous voyez (la carte est-elle toujours haute ? Quelle taille fait-elle ?)</p>
+    </div>
+</body>
+</html>

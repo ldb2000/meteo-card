@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Compact - Carte Météo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .weather-card {
+            border-radius: 16px;
+            padding: 12px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            height: 120px;
+        }
+        
+        .weather-card.old {
+            height: 200px;
+            padding: 24px;
+        }
+        
+        .weather-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .location {
+            font-size: 14px;
+            font-weight: 300;
+            margin-bottom: 2px;
+            opacity: 0.9;
+        }
+        .current-temp {
+            font-size: 36px;
+            font-weight: 100;
+            line-height: 1;
+            margin: 2px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .condition {
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 4px;
+            opacity: 0.9;
+        }
+        .temp-range {
+            display: flex;
+            gap: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        /* Ancienne version */
+        .old .location { font-size: 18px; margin-bottom: 8px; }
+        .old .current-temp { font-size: 64px; margin: 8px 0; }
+        .old .condition { font-size: 16px; margin-bottom: 16px; }
+        .old .temp-range { font-size: 16px; gap: 20px; }
+        
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: #333;
+            text-align: center;
+        }
+        
+        .label {
+            background: rgba(0,0,0,0.3);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+        }
+        
+        .card-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📏 Version Compact Appliquée</h1>
+        
+        <div class="comparison">
+            <div class="card-container">
+                <div class="weather-card old">
+                    <div class="label">Ancienne (200px)</div>
+                    <div class="location">Valencin</div>
+                    <div class="current-temp">21°</div>
+                    <div class="condition">Ensoleillé</div>
+                    <div class="temp-range">
+                        <span>↑ 25°</span>
+                        <span>↓ 15°</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-container">
+                <div class="weather-card">
+                    <div class="label">Compact (120px)</div>
+                    <div class="location">Valencin</div>
+                    <div class="current-temp">21°</div>
+                    <div class="condition">Ensoleillé</div>
+                    <div class="temp-range">
+                        <span>↑ 25°</span>
+                        <span>↓ 15°</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <h2>✅ Version Compact Appliquée</h2>
+            
+            <h3>📐 Changements de dimensions</h3>
+            <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+                <li><strong>Hauteur</strong> : 200px → <span style="color: #0984e3;">120px</span> (-80px)</li>
+                <li><strong>Padding</strong> : 24px → <span style="color: #0984e3;">12px</span></li>
+            </ul>
+            
+            <h3>🔤 Tailles de police réduites</h3>
+            <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+                <li><strong>Ville</strong> : 18px → <span style="color: #0984e3;">14px</span></li>
+                <li><strong>Température</strong> : 64px → <span style="color: #0984e3;">36px</span></li>
+                <li><strong>Condition</strong> : 16px → <span style="color: #0984e3;">12px</span></li>
+                <li><strong>Min/Max</strong> : 16px → <span style="color: #0984e3;">12px</span></li>
+            </ul>
+            
+            <h3>📏 Espacements optimisés</h3>
+            <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+                <li><strong>Marge ville</strong> : 8px → <span style="color: #0984e3;">2px</span></li>
+                <li><strong>Marge température</strong> : 8px → <span style="color: #0984e3;">2px</span></li>
+                <li><strong>Marge condition</strong> : 16px → <span style="color: #0984e3;">4px</span></li>
+                <li><strong>Gap min/max</strong> : 20px → <span style="color: #0984e3;">12px</span></li>
+            </ul>
+            
+            <p style="margin-top: 30px; font-weight: 600; color: #0984e3;">
+                🎉 Carte maintenant 40% plus compacte tout en restant parfaitement lisible !
+            </p>
+        </div>
+    </div>
+</body>
+</html>

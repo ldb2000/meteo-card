@@ -13,6 +13,7 @@ fi
 # Copier la carte dans le conteneur
 echo "📁 Copie de meteo-card.js..."
 docker cp meteo-card.js homeassistant-dev:/config/www/
+docker cp .devcontainer/ui-lovelace.yaml homeassistant-dev:/config
 
 echo "✅ Carte rechargée avec succès !"
 echo "🌐 Rafraîchissez votre navigateur sur http://localhost:8123"

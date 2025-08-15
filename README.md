@@ -1,8 +1,21 @@
-# Meteo Card
+# 🌤️ Carte Météo Moderne
 
-Une carte météo simple pour Home Assistant. Le fond change en fonction de la condition météo du jour et affiche les températures minimale et maximale ainsi que la prévision de la journée.
+Une carte météo moderne et élégante pour Home Assistant avec un design inspiré des applications météo populaires. La carte affiche les informations essentielles dans un format visuel attractif avec des arrière-plans adaptatifs selon les conditions météo.
 
-Les conditions prises en charge pour le fond d'écran sont : `sunny`, `rainy`, `cloudy`, `snowy`, `partlycloudy` et `clear-night`.
+## ✨ Caractéristiques
+
+- 🎨 **Design moderne** : Interface épurée avec typographie claire
+- 🏙️ **Nom de ville personnalisable** : Affichez le nom de votre choix
+- 🌡️ **Grande température centrée** : Lisibilité optimale
+- 📝 **Descriptions en français** : Conditions météo traduites
+- ↗️ **Températures min/max** : Avec flèches pour une lecture intuitive
+- 🎨 **Arrière-plans adaptatifs** : Dégradés qui changent selon la météo
+- 🌊 **Animations subtiles** : Effets de survol élégants
+- 📱 **Design responsive** : S'adapte à toutes les tailles d'écran
+
+### Conditions météo supportées
+
+`sunny`, `partlycloudy`, `rainy`, `cloudy`, `snowy`, `clear-night`, `lightning`, `fog`, `windy`
 
 ## Installation
 
@@ -17,14 +30,44 @@ resources:
 
 ## Utilisation
 
-Ajouter la carte dans votre tableau de bord :
+### Configuration de base
 
 ```yaml
 type: custom:meteo-card
-entity: weather.ma_station
+entity: weather.valencin
 ```
 
-L'entité doit fournir des prévisions (`attributes.forecast`) pour que la carte fonctionne correctement.
+### Configuration avec nom personnalisé
+
+```yaml
+type: custom:meteo-card
+entity: weather.valencin
+name: "Valencin"
+```
+
+### Exemples avancés
+
+```yaml
+# Plusieurs cartes en grille
+type: grid
+columns: 2
+cards:
+  - type: custom:meteo-card
+    entity: weather.valencin
+    name: "Valencin"
+  - type: custom:meteo-card
+    entity: weather.lyon
+    name: "Lyon"
+```
+
+### Paramètres disponibles
+
+| Paramètre | Type | Requis | Description |
+|-----------|------|--------|-------------|
+| `entity` | string | Oui | Entité météo Home Assistant |
+| `name` | string | Non | Nom à afficher (par défaut: nom de l'entité) |
+
+**Note** : L'entité météo doit fournir au minimum `temperature` et `state`. Les prévisions (`attributes.forecast`) sont optionnelles mais recommandées pour les températures min/max.
 
 ## Développement avec DevContainer
 

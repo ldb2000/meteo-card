@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test des hauteurs de carte</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        /* Différentes hauteurs pour comparaison */
+        .weather-card {
+            border-radius: 16px;
+            padding: 16px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        }
+        
+        .weather-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .height-120 { height: 120px; }
+        .height-140 { height: 140px; }
+        .height-160 { height: 160px; }
+        .height-180 { height: 180px; }
+        
+        .location {
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 4px;
+            opacity: 0.9;
+        }
+        .current-temp {
+            font-size: 48px;
+            font-weight: 100;
+            line-height: 1;
+            margin: 4px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .condition {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        .temp-range {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Version très compacte */
+        .compact .location { font-size: 14px; margin-bottom: 2px; }
+        .compact .current-temp { font-size: 36px; margin: 2px 0; }
+        .compact .condition { font-size: 12px; margin-bottom: 4px; }
+        .compact .temp-range { font-size: 12px; gap: 12px; }
+        
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌤️ Test des hauteurs de carte météo</h1>
+        
+        <div class="grid">
+            <div class="weather-card height-120 compact">
+                <div class="location">Valencin</div>
+                <div class="current-temp">21°</div>
+                <div class="condition">Ensoleillé</div>
+                <div class="temp-range">
+                    <span>↑ 25°</span>
+                    <span>↓ 15°</span>
+                </div>
+            </div>
+            
+            <div class="weather-card height-140">
+                <div class="location">Valencin</div>
+                <div class="current-temp">21°</div>
+                <div class="condition">Ensoleillé</div>
+                <div class="temp-range">
+                    <span>↑ 25°</span>
+                    <span>↓ 15°</span>
+                </div>
+            </div>
+            
+            <div class="weather-card height-160">
+                <div class="location">Valencin</div>
+                <div class="current-temp">21°</div>
+                <div class="condition">Ensoleillé</div>
+                <div class="temp-range">
+                    <span>↑ 25°</span>
+                    <span>↓ 15°</span>
+                </div>
+            </div>
+            
+            <div class="weather-card height-180">
+                <div class="location">Valencin</div>
+                <div class="current-temp">21°</div>
+                <div class="condition">Ensoleillé</div>
+                <div class="temp-range">
+                    <span>↑ 25°</span>
+                    <span>↓ 15°</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <h2>📏 Comparaison des hauteurs</h2>
+            <ul>
+                <li><strong>120px (très compact)</strong> : Police réduite, espacements minimum</li>
+                <li><strong>140px</strong> : Compact mais lisible</li>
+                <li><strong>160px (actuel)</strong> : Bon équilibre lisibilité/compacité</li>
+                <li><strong>180px</strong> : Plus d'espace, confortable</li>
+            </ul>
+            
+            <h3>✅ Changements appliqués (160px)</h3>
+            <ul>
+                <li>Hauteur : 200px → <strong>160px</strong></li>
+                <li>Padding : 24px → <strong>16px</strong></li>
+                <li>Température : 64px → <strong>48px</strong></li>
+                <li>Ville : 18px → <strong>16px</strong></li>
+                <li>Condition : 16px → <strong>14px</strong></li>
+                <li>Min/Max : 16px → <strong>14px</strong></li>
+            </ul>
+            
+            <h3>🎯 Si vous voulez encore plus compact</h3>
+            <p>Je peux créer une version 120px avec les polices encore plus petites.</p>
+        </div>
+    </div>
+</body>
+</html>
