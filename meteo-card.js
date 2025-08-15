@@ -119,7 +119,7 @@ class MeteoCard extends LitElement {
     const tempHigh = this.today?.temperature ?? this.entity.attributes.temperature_high ?? currentTemp + 5;
 
     return html`
-      <ha-card class="weather-card ${bg}" style="height: 120px !important; min-height: 120px !important;">
+      <ha-card class="weather-card ${bg}">
         <div class="weather-content">
           <div class="location">${this._getLocationName()}</div>
           <div class="current-temp">${currentTemp}°</div>
@@ -136,14 +136,15 @@ class MeteoCard extends LitElement {
   static get styles() {
     return css`
       :host {
-        height: 120px !important;
-        min-height: 120px !important;
-        max-height: 120px !important;
+        --meteo-card-height: 120px;
+        height: var(--meteo-card-height) !important;
+        min-height: var(--meteo-card-height) !important;
+        max-height: var(--meteo-card-height) !important;
       }
 
       ha-card {
-        height: 120px !important;
-        min-height: 120px !important;
+        height: var(--meteo-card-height) !important;
+        min-height: var(--meteo-card-height) !important;
         border-radius: 16px;
         border: none;
         box-shadow: 0 4px 20px rgba(0,0,0,0.1);
