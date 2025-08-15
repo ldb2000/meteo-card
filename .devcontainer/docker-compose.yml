@@ -1,0 +1,48 @@
+
+
+services:
+  homeassistant:
+    image: homeassistant/home-assistant:stable
+    container_name: homeassistant-dev
+    restart: unless-stopped
+    privileged: true
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - ../:/workspace
+      - ha-config:/config
+      - /run/dbus:/run/dbus:ro
+    ports:
+      - "8123:8123"
+    networks:
+      - ha-network
+    command: >
+      bash -c "
+        # Créer les dossiers nécessaires
+        mkdir -p /config/www &&
+        mkdir -p /config/custom_components &&
+        
+        # Copier la carte météo dans le dossier www
+        cp /workspace/meteo-card.js /config/www/ &&
+        
+        # Créer un fichier de configuration de base si inexistant
+        if [ ! -f /config/configuration.yaml ]; then
+          cp /workspace/.devcontainer/configuration.yaml /config/
+        fi &&
+        
+        # Créer un fichier ui-lovelace.yaml si inexistant
+        if [ ! -f /config/ui-lovelace.yaml ]; then
+          cp /workspace/.devcontainer/ui-lovelace.yaml /config/
+        fi &&
+        
+        # Démarrer Home Assistant
+        python -m homeassistant --config /config
+      "
+
+volumes:
+  ha-config:
+    driver: local
+
+networks:
+  ha-network:
+    driver: bridge

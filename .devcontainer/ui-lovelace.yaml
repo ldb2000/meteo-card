@@ -1,0 +1,25 @@
+title: Test Meteo Card
+views:
+  - path: default_view
+    title: Accueil
+    icon: mdi:home
+    cards:
+      - type: custom:meteo-card
+        entity: weather.valencin
+        
+      - type: markdown
+        content: |
+          ## Guide de test de la carte météo
+          
+          Cette configuration de test inclut :
+          - **Carte météo personnalisée** : Notre carte `meteo-card` utilisant l'entité `weather.demo_weather_north`
+          - **Entités de démonstration** : Entités météo factices pour les tests
+          - **Carte météo standard** : Pour comparaison avec notre carte personnalisée
+          
+          ### Pour tester la carte :
+          1. Modifiez le fichier `meteo-card.js` dans `/workspace/`
+          2. Rechargez Home Assistant ou rafraîchissez la page
+          3. Les changements devraient être visibles immédiatement
+          
+          ### Conditions météo testables :
+          La carte Demo Weather change périodiquement et inclut : `sunny`, `rainy`, `cloudy`, `snowy`, `partlycloudy`, `clear-night`
